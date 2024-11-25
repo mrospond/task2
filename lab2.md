@@ -206,7 +206,7 @@ Zostało wykryte 9 podatności, w tym dosyć świeżą (25.10.2024) podatność 
 
 Funkcja `safe_join()` odpowiedzialna za podatność, weryfikuje, czy podana ścieżka pozostaje w granicach zaufanego katalogu. Opiera się ona na `os.path.isabs()` do stwierdzenia czy ścieżka jest absolutna, co umożliwia obejście walidacji dla ścieżek zaczynających się od `/` na serwerach Windowsowych. W takim przypadku atakujący wkorzystując róznice w interpretacji ścieżek na systemach Windows, jest w stanie uzyskać dostęp do plików spoza aplikacji (np. do plików konfiguracyjnych, sekretów, .env, itp).
 
-Pomimo że w kodzie naszej aolikacji funkcja `wekrzeug.safe_join()` nie została bezpośrednio użyta, nie możemy lekceważyć tej podatności. Biblioteka `werkzeug` jest kluczowym komponentem flaska, więc jej wykonanie może być dla nas niewidoczne.
+Pomimo że w kodzie naszej aolikacji funkcja `wekrzeug.safe_join()` nie została bezpośrednio użyta, nie możemy lekceważyć tej podatności. Biblioteka `werkzeug` jest kluczowym komponentem Flaska, więc jej wykonanie może nie być dla nas widoczne i zależy od użytej wersji flaska. 
 
 Podatność zarejestrowana jako [CVE-2024-49766](https://nvd.nist.gov/vuln/detail/CVE-2024-49766):
 - NVD assessment not yet provided
