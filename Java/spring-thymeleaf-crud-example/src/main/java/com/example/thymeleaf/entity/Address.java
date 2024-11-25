@@ -57,15 +57,22 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "id='" + id + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", complement='" + complement + '\'' +
-                ", district='" + district + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
+                ", zipCode='" + maskField(zipCode) + '\'' +
+                ", street='" + maskField(street) + '\'' +
+                ", number='" + maskField(number) + '\'' +
+                ", complement='" + maskField(complement) + '\'' +
+                ", district='" + maskField(district) + '\'' +
+                ", city='" + maskField(city) + '\'' +
+                ", state='" + maskField(state) + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
+
+    private String maskField(String s) {
+        if (s == null || s.isEmpty()) 
+            return s;
+        return "*".repeat(s.length());
+    }
+
 }
